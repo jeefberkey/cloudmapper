@@ -157,17 +157,17 @@
   Parameters:
   - Name: StackName
     Value: cloudformation-describe-stacks.json|.Stacks[]?|.StackName
-- Service: cloudfront
-  Request: list-distributions
-- Service: cloudsearch
-  Request: describe-domains
-- Service: cloudsearch
-  Request: describe-service-access-policies
-  Parameters:
-  - Name: DomainName
-    Value: cloudsearch-describe-domains.json|.DomainStatusList[]?|.DomainName
-- Service: cloudwatch
-  Request: describe-alarms
+#- Service: cloudfront
+#  Request: list-distributions
+#- Service: cloudsearch
+#  Request: describe-domains
+#- Service: cloudsearch
+#  Request: describe-service-access-policies
+#  Parameters:
+#  - Name: DomainName
+#    Value: cloudsearch-describe-domains.json|.DomainStatusList[]?|.DomainName
+#- Service: cloudwatch
+#  Request: describe-alarms
 - Service: config
   Request: describe-config-rules
 - Service: config
@@ -216,8 +216,8 @@
   Request: describe-cache-clusters
 - Service: elasticbeanstalk
   Request: describe-applications
-- Service: efs
-  Request: describe-file-systems
+#- Service: efs
+#  Request: describe-file-systems
 - Service: es
   Request: list-domain-names
 - Service: es
@@ -229,13 +229,13 @@
   Request: describe-event-bus
 - Service: events
   Request: list-rules
-- Service: firehose
-  Request: list-delivery-streams
-- Service: firehose
-  Request: describe-delivery-stream
-  Parameters:
-  - Name: DeliveryStreamName
-    Value: firehose-list-delivery-streams.json|.DeliveryStreamNames[]?
+#- Service: firehose
+#  Request: list-delivery-streams
+#- Service: firehose
+#  Request: describe-delivery-stream
+#  Parameters:
+#  - Name: DeliveryStreamName
+#    Value: firehose-list-delivery-streams.json|.DeliveryStreamNames[]?
 - Service: glacier
   Request: list-vaults
   Parameters:
@@ -285,10 +285,10 @@
   Request: describe-log-groups
 - Service: logs
   Request: describe-resource-policies
-- Service: lightsail
-  Request: get-instances
-- Service: lightsail
-  Request: get-load-balancers
+#- Service: lightsail
+#  Request: get-instances
+#- Service: lightsail
+#  Request: get-load-balancers
 - Service: apigateway
   Request: get-rest-apis
 - Service: apigateway

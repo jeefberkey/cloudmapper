@@ -25,4 +25,5 @@ mock = "==2.0.0"
 pylint = "==1.8.1"
 
 [requires]
-python_version = "3.7"
+#python_version = "3.7"
+python_full_version = "3.7.1"
