@@ -136,7 +136,7 @@ def collect(arguments):
     make_directory("account-data")
     make_directory("account-data/{}".format(account_dir))
 
-    default_region = os.environ.get('AWS_REGION', 'us-east-1')
+    default_region = os.environ.get('AWS_REGION', 'us-gov-west-1')
 
     session_data = {'region_name': default_region}
 
@@ -199,13 +199,15 @@ def collect(arguments):
         parameters = {}
         for region in region_list['Regions']:
             dynamic_parameter = None
+            #print(runner['Service'])
+            #print(session.get_available_regions(runner['Service']))
             # Only call universal services in default region
-            if runner['Service'] in universal_services:
-                if region['RegionName'] != default_region:
-                    continue
-            elif region['RegionName'] not in session.get_available_regions(runner['Service']):
-                print('  Skipping region {}, as {} does not exist there'.format(region['RegionName'], runner['Service']))
-                continue
+            #if runner['Service'] in universal_services:
+            #    if region['RegionName'] != default_region:
+            #        continue
+            #elif region['RegionName'] not in session.get_available_regions(runner['Service']):
+            #    print('  Skipping region {}, as {} does not exist there'.format(region['RegionName'], runner['Service']))
+            #    continue
             handler = session.client(runner['Service'], region_name=region['RegionName'])
 
             filepath = "account-data/{}/{}/{}-{}".format(

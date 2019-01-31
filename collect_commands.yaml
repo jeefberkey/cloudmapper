@@ -5,18 +5,18 @@
   Request: get-caller-identity
 - Service: iam
   Request: get-account-authorization-details
-- Service: iam
-  # Generate the access reports for all roles, and collect them later
-  Request: generate-service-last-accessed-details
-  Parameters:
-    - Name: Arn
-      Value: iam-get-account-authorization-details.json|.RoleDetailList[]?|.Arn
-- Service: iam
-  # Generate the access reports for all roles, and collect them later
-  Request: generate-service-last-accessed-details
-  Parameters:
-    - Name: Arn
-      Value: iam-get-account-authorization-details.json|.UserDetailList[]?|.Arn
+# - Service: iam
+#   # Generate the access reports for all roles, and collect them later
+#   Request: generate-service-last-accessed-details
+#   Parameters:
+#     - Name: Arn
+#       Value: iam-get-account-authorization-details.json|.RoleDetailList[]?|.Arn
+# - Service: iam
+#   # Generate the access reports for all roles, and collect them later
+#   Request: generate-service-last-accessed-details
+#   Parameters:
+#     - Name: Arn
+#       Value: iam-get-account-authorization-details.json|.UserDetailList[]?|.Arn
 - Service: iam
   Request: get-role # Need to get IAM boundaries
   Parameters:
@@ -35,14 +35,14 @@
   Request: list-account-aliases
 - Service: iam
   Request: get-credential-report
-- Service: iam
-  Request: get-service-last-accessed-details
-  Parameters:
-    - Name: JobId
-      Value: iam-generate-service-last-accessed-details/*|.JobId
-  Check:
-    - Name: JobStatus
-      Value: "COMPLETED"
+# - Service: iam
+#   Request: get-service-last-accessed-details
+#   Parameters:
+#     - Name: JobId
+#       Value: iam-generate-service-last-accessed-details/*|.JobId
+#   Check:
+#     - Name: JobStatus
+#       Value: "COMPLETED"
 - Service: iam
   Request: list-saml-providers
 - Service: iam
@@ -74,15 +74,15 @@
   Parameters:
   - Name: Bucket
     Value: s3-list-buckets.json|.Buckets[]?|.Name
-- Service: route53
-  Request: list-hosted-zones
-- Service: route53
-  Request: list-resource-record-sets
-  Parameters:
-  - Name: HostedZoneId
-    Value: route53-list-hosted-zones.json|.HostedZones[]?|[.Id,.Name]
-- Service: route53domains
-  Request: list-domains
+# - Service: route53
+#   Request: list-hosted-zones
+# - Service: route53
+#   Request: list-resource-record-sets
+#   Parameters:
+#   - Name: HostedZoneId
+#     Value: route53-list-hosted-zones.json|.HostedZones[]?|[.Id,.Name]
+# - Service: route53domains
+#   Request: list-domains
 - Service: ec2
   Request: describe-vpcs
 - Service: ec2
@@ -157,17 +157,17 @@
   Parameters:
   - Name: StackName
     Value: cloudformation-describe-stacks.json|.Stacks[]?|.StackName
-#- Service: cloudfront
-#  Request: list-distributions
-#- Service: cloudsearch
-#  Request: describe-domains
-#- Service: cloudsearch
-#  Request: describe-service-access-policies
-#  Parameters:
-#  - Name: DomainName
-#    Value: cloudsearch-describe-domains.json|.DomainStatusList[]?|.DomainName
-#- Service: cloudwatch
-#  Request: describe-alarms
+# - Service: cloudfront
+#   Request: list-distributions
+# - Service: cloudsearch
+#   Request: describe-domains
+# - Service: cloudsearch
+#   Request: describe-service-access-policies
+#   Parameters:
+#   - Name: DomainName
+#     Value: cloudsearch-describe-domains.json|.DomainStatusList[]?|.DomainName
+- Service: cloudwatch
+  Request: describe-alarms
 - Service: config
   Request: describe-config-rules
 - Service: config
@@ -216,8 +216,8 @@
   Request: describe-cache-clusters
 - Service: elasticbeanstalk
   Request: describe-applications
-#- Service: efs
-#  Request: describe-file-systems
+- Service: efs
+  Request: describe-file-systems
 - Service: es
   Request: list-domain-names
 - Service: es
@@ -229,13 +229,13 @@
   Request: describe-event-bus
 - Service: events
   Request: list-rules
-#- Service: firehose
-#  Request: list-delivery-streams
-#- Service: firehose
-#  Request: describe-delivery-stream
-#  Parameters:
-#  - Name: DeliveryStreamName
-#    Value: firehose-list-delivery-streams.json|.DeliveryStreamNames[]?
+# - Service: firehose
+#   Request: list-delivery-streams
+# - Service: firehose
+#   Request: describe-delivery-stream
+#   Parameters:
+#   - Name: DeliveryStreamName
+#     Value: firehose-list-delivery-streams.json|.DeliveryStreamNames[]?
 - Service: glacier
   Request: list-vaults
   Parameters:
@@ -255,11 +255,11 @@
   Parameters:
   - Name: KeyId
     Value: kms-list-keys.json|.Keys[]?|.KeyId
-- Service: kms
-  Request: list-key-policies
-  Parameters:
-  - Name: KeyId
-    Value: kms-list-keys.json|.Keys[]?|.KeyId
+# - Service: kms
+#   Request: list-key-policies
+#   Parameters:
+#   - Name: KeyId
+#     Value: kms-list-keys.json|.Keys[]?|.KeyId
 - Service: kms
   Request: get-key-policy
   Parameters:
@@ -267,11 +267,11 @@
     Value: kms-list-keys.json|.Keys[]?|.KeyId
   - Name: PolicyName
     Value: 'default'
-- Service: kms
-  Request: get-key-rotation-status
-  Parameters:
-  - Name: KeyId
-    Value: kms-list-keys.json|.Keys[]?|.KeyId
+# - Service: kms
+#   Request: get-key-rotation-status
+#   Parameters:
+#   - Name: KeyId
+#     Value: kms-list-keys.json|.Keys[]?|.KeyId
 - Service: lambda
   Request: list-functions
 - Service: lambda
@@ -285,10 +285,10 @@
   Request: describe-log-groups
 - Service: logs
   Request: describe-resource-policies
-#- Service: lightsail
-#  Request: get-instances
-#- Service: lightsail
-#  Request: get-load-balancers
+# - Service: lightsail
+#   Request: get-instances
+# - Service: lightsail
+#   Request: get-load-balancers
 - Service: apigateway
   Request: get-rest-apis
 - Service: apigateway
@@ -306,10 +306,10 @@
   Parameters:
   - Name: restApiId
     Value: apigateway-get-rest-apis.json|.items[]?|.id
-- Service: guardduty
-  Request: list-detectors
-- Service: guardduty
-  Request: get-detector
-  Parameters:
-  - Name: DetectorId
-    Value: guardduty-list-detectors.json|.DetectorIds[]?|.
+# - Service: guardduty
+#   Request: list-detectors
+# - Service: guardduty
+#   Request: get-detector
+#   Parameters:
+#   - Name: DetectorId
+#     Value: guardduty-list-detectors.json|.DetectorIds[]?|.
